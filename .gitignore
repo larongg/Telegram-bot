@@ -1,5 +1,5 @@
-config.py;
-.idea;
-__pycache__;
-.gitignore;
-.gitattributes;
+config.py,
+.idea,
+__pycache__,
+.gitignore,
+.gitattributes,
