@@ -12,6 +12,7 @@ global admins_id
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    array[str(message.chat.id)] = []
     markup_reply = types.ReplyKeyboardMarkup(resize_keyboard=True)
     for surname in surnames:
         markup_reply.add(types.KeyboardButton(surname))
@@ -47,7 +48,7 @@ def get_text(message):
         for variant in variants:
             markup_reply.add(types.KeyboardButton(variant))
         bot.send_message(message.chat.id, 'Ты на паре?' ,reply_markup=markup_reply)
-        array[str(message.chat.id)] = [message.text]
+        array[str(message.chat.id)].append(message.text)
     elif message.text in variants:
         if message.text == 'Присутствую': bot.send_message(message.chat.id, 'Записал')
         elif message.text == 'Опаздываю': bot.send_message(message.chat.id, 'Как придёшь запишу')
