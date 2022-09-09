@@ -30,6 +30,7 @@ def get_info_admin(message):
     else:
         bot.send_message(message.chat.id, 'Вы не являетесь администратором')
 
+
 @bot.message_handler(commands=['clear'])
 def clear_spisok(message):
     if message.chat.id in admins_id:
@@ -37,6 +38,7 @@ def clear_spisok(message):
         bot.send_message(message.chat.id, 'Список очищен')
     else:
         bot.send_message(message.chat.id, 'Вы не являетесь администратором')
+
 
 @bot.message_handler(content_types = ['text'])
 def get_text(message):
