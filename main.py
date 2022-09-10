@@ -1,4 +1,4 @@
-from config import TOKEN, surnames, array, admins_id, #variants
+from config import TOKEN, surnames, array, admins_id#, variants
 import telebot
 from telebot import types
 
