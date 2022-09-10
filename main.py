@@ -12,7 +12,6 @@ global admins_id
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    array[str(message.chat.id)] = []
     markup_reply = types.ReplyKeyboardMarkup(resize_keyboard=True)
     for surname in surnames:
         markup_reply.add(types.KeyboardButton(surname))
@@ -24,10 +23,10 @@ def get_info_admin(message):
     if message.chat.id in admins_id:
         spisok = 'Список 8К23:'
         for people in array.keys():
-            spisok += '\n' + array[people]
+            spisok += '\n' + str(array.get(people))
             '''for hzuzechepridumat in array.get(people):
-                spisok += hzuzechepridumat + ' '
-        bot.send_message(message.chat.id, spisok)'''
+                spisok += hzuzechepridumat + '\n' '''
+        bot.send_message(message.chat.id, spisok)
     else:
         bot.send_message(message.chat.id, 'У вас нет прав')
 
@@ -45,7 +44,7 @@ def clear_spisok(message):
 def get_text(message):
     #markup_reply = types.ReplyKeyboardMarkup(resize_keyboard=True)
     if message.text in surnames:
-        array[str(message.chat.id)].append(message.text)
+        array[str(message.chat.id)] = message.text
         bot.send_message(message.chat.id, 'Записал')
         '''for variant in variants:
             markup_reply.add(types.KeyboardButton(variant))
